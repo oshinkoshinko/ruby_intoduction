@@ -110,9 +110,66 @@ print b
 puts b.delete(3)
 print b
 
-# +で連結した場合が元の配列は維持される
+# +で連結した場合が元の配列は維持される ←基本的にコッチ
 print a + b
 print a
 # concatは連結された元の配列が変更される
 print a.concat(b)
 print a
+
+
+x = [1,2,3,4,5]
+y = [2,7,9,3,5]
+
+#和集合
+print x | y
+#差集合
+print x - y
+#積集合
+print x & y
+
+e, f = 100, 200, 500
+puts f
+e, *f = 100, 200, 500
+print f
+
+x = [1,2,3,4,5]
+y = [2,7,9,3,5]
+
+x.push(1000)
+print x
+
+#配列の中に配列が、、、
+# x.push(y)
+# print x
+
+#配列を展開して渡す
+x.push(*y)
+print x
+
+v = [1,2,3]
+print [v]
+
+print x + a + y
+
+# 文字列を配列に変換
+word = "Hello, Hola, Selamat"
+print word.split(', ')
+
+h = Array.new(5,0)
+print h
+
+# 添え字は0から始まる
+h = Array.new(10) { |n| n % 3 + 1}
+print h
+
+puts 0 % 3 + 1
+puts 1 % 3 + 1
+puts 2 % 3 + 1
+puts 3 % 3 + 1
+
+o = Array.new(5) {'default'}
+# !は破壊的メソッド
+puts o[0].upcase!
+print o
+
