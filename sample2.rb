@@ -86,3 +86,28 @@ loop do
   puts n
   break if n == 5
 end
+
+print (1..11).map { |n| n += n}
+
+print 5.upto(10).select { |n| n.even? }
+
+numbers = [1,4,2,4,52,3].shuffle
+numbers.each do |n|
+  puts n
+  break if n == 4
+end
+
+equipos = ["Atletico", "Barcelona", "Seville"]
+ranks = [1,2,3]
+
+catch :done do
+  equipos.shuffle.each do |equipo|
+    ranks.shuffle.each do |rank|
+      puts "#{equipo} es #{rank} en la Liga"
+      if equipo == 'Atletico' && rank == 1
+        puts "Ganamos la Liga"
+        throw :done
+      end
+    end
+  end
+end
