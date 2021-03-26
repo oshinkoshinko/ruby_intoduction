@@ -1,5 +1,3 @@
-#複数行の入力
-a = readlines
-p a.max.chomp
-
-a = "paiza"
+p "ruby"[0,3] #1番目から3文字　rub
+p "ruby".slice(0,3) #rub
+p "ruby".slice(0..1)

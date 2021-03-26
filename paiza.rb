@@ -239,3 +239,21 @@ p a
 while line = gets #入力された行を止まらずに返す　複数OK!
   puts line.chomp
 end
+
+#複数行の入力
+# a = readlines
+# p a.max.chomp
+
+#半角スペース区切りの横並び出力　=> times と　print
+n = 10
+a = "paiza"
+n.times { print a + " "}
+
+#配列の置換 全ての要素=>fill() 
+
+a = [1,2,3]
+
+print a.fill(4)
+
+input = $stdin.read.split(/\s/)
+p input
