@@ -211,3 +211,31 @@ p (1..10).map { |it| fibonacci(it)}
 #一つずつ出力=>each
 (1..10).each { |it| puts fibonacci(it)}
 
+#文字に重複があればNG、なければNG AAAA=>NG Paiza=>OK
+#charsで文字列を一つずつ配列に。=> uniqで一意性のある要素を取得しsizeでその数を出す
+
+word = gets.chomp
+
+character = word.chars
+
+if character.uniq.size > 1
+    puts "OK"
+else
+    puts "NG"
+end
+
+#複数回、繰り返し処理
+n = 5
+n.times { puts "paiza"}
+
+#標準入力　1行=>gets 複数行=>readlines
+
+c = gets #入力した1行を返す
+p c
+a = readlines  #複数の入力された要素を配列にして返す control + d　で抜ける
+p a
+
+#複数行にわたる入力
+while line = gets #入力された行を止まらずに返す　複数OK!
+  puts line.chomp
+end
