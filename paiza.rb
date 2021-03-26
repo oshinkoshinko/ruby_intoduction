@@ -82,6 +82,7 @@ puts array[2][1]
 
 array = [[6,5,4,3,2,1],[3,1,8,8,1,3]]
 
+#配列から要素を半角空白区切りで出力→join
 puts array.join(' ') #→6 5 4 3 2 1 3 1 8 8 1 3
 puts array[0].join(' ') #6 5 4 3 2 1
 puts array[1].join('') #318813
@@ -148,3 +149,65 @@ puts array.index(8) + 1
 puts array.count(1)
 
 print array.sort
+
+#配列　最大最小
+
+array = [1,10,2,9,3,8,4,7,5,6,1,1]
+
+p array.uniq
+puts array.uniq.sort
+p array.max
+p array.min
+p array.sort.reverse
+
+puts array.join(' ')
+
+#最大最小を同時に取得→minmax
+puts array.minmax.join(" ")
+
+#条件を満たす要素を列挙、削除、分割→select,reject,partition
+array = [1,10,2,9,3,8,4,7,5,6,1,1]
+p array.sort.select { |n| n >= 5 }.join(" ")
+p array.reject { |n| n < 3 }
+p array.partition { |n| n < 3 }
+
+#配列の平均→inject or each
+#配列オブジェクト.inject { ｜初期値, 要素｜ ブロック処理 }
+puts array.inject(0) { |sum, array2| sum + array2 } / array.length
+#シンボルでスタイリッシュに (:+) 配列の要素を全て足す
+puts array.inject(:+) / array.length
+
+array = [1,2,3,4,5]
+
+puts ave = array.inject(:+) / array.length
+puts array.select { |n| n >= ave }
+
+# マンハッタン距離(座標間の距離)　(x1 - x2) + (y1 - y2)
+# (2,3)基点 (1,2) (5,6)
+
+#多重配列をフラットにして新しい配列を返す flatten
+ary = [[1,2,3,4,5],[8,11,23,44,56]]
+p ary.flatten #[1, 2, 3, 4, 5, 8, 11, 23, 44, 56]
+
+#配列から指定した複数の要素を取り出し、新しい配列で返す values_at
+ary = [1,3,6,7,3]
+p ary.values_at(0,2,9) #[1, 6, nil]
+
+#フィボナッチ　 (Fn)はフィボナッチ数列（フィボナッチすうれつ、（英: Fibonacci sequence）と呼ばれ、
+# 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, と続く。
+# 最初の二項は 0, 1 であり、以後どの項もその直前の2つの項の和となっている。
+
+def fibonacci(n)
+  if n <= 1
+    n
+  else
+    fibonacci(n-2) + fibonacci(n-1)
+  end
+end
+
+p fibonacci(3)
+
+p (1..10).map { |it| fibonacci(it)}
+#一つずつ出力=>each
+(1..10).each { |it| puts fibonacci(it)}
+
