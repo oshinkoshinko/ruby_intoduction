@@ -90,4 +90,48 @@ p a = s[:foo] #=>'Hello'
 p b = s[:foo]
 p a.equal?(b) #aとbは同一オブジェクト
 
+#%記法でシンボルやシンボルの配列
+#%s! もしくは ()で囲んでシンボルに
+p %s!ruby is fun! # => :"ruby is fun"
+p %s(ruby is fun) # => :"ruby is fun"
 
+# %iを置いて配列作成　空白が区切り
+p %i(apple orange melon) # => [:apple, :orange, :melon]
+
+# 文字列とシンボルは別物
+a = "apple"
+b = :apple
+p a == b # => false
+
+#相互に変換可能
+p a.to_sym == b # => true
+p a == b.to_s # => true
+
+# &.演算子を使えばnilじゃない場合は結果を、nilの場合はnilを返す
+a = "foo"
+p a&.upcase
+v = nil
+p v&.upcase
+
+# <<で文字列連結
+a = "aiu"
+b = "eo"
+p a << b # => aiueo
+
+# n回繰り返して連結した文字列
+p a * 3 # => aiuaiuaiu
+
+# 変数がnilまたはfalseであれば〇〇を代入 ||=
+limit = 200
+limit ||= 10
+p limit #=> 200
+
+limit = nil
+limit ||= 10 #変数limitがnilまたはfalseなら10を代入
+p limit #=> 10
+
+# trueまたはfalseに変換 !!変数　trueかfalseを返す
+user = "Taro"
+p !!user
+user = nil
+p !!user
