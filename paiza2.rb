@@ -128,3 +128,47 @@ else
     time[1] = format("%02d", time[1])
     puts time.join(":")
 end
+
+#該当要素ごとに削除 delete_if
+# name = gets.chomp.chars
+name = "Paiza".chars
+target = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+
+name.delete_if do |str|
+    target.include?(str)
+end
+
+puts name.join("") #=>Pz
+
+#複数要素を置換
+# name = gets.chomp
+name = "PAIZA"
+puts name.gsub(/A|E|G|I|O|S|Z/, "A" => "4", "E" => "3", "G" => "6", "I" => "1", "O" => "0", "S" => "5", "Z" => "2")
+#=>P4124
+
+#黒電話
+# number1 = gets.chomp.split("-").join.chars
+
+# sum = 0
+# number1.each do |n|
+#     n2 = n.gsub(/0|1|2|3|4|5|6|7|8|9/, "0"=>"12", "1"=>3, "2"=>4, "3"=>5, "4"=>6, "5"=>7, "6"=>8, "7"=>9, "8"=>10, "9"=>11)
+#     sum += (n2.to_i * 2)
+#     sum
+# end
+
+# p sum
+
+#くじ
+# atari = gets.chomp.split
+# n = gets.to_i
+
+# n.times do
+#     kuji = gets.chomp.split
+#     sum = 0
+#     kuji.each do |k|
+#         if atari.include?(k)
+#             sum += 1
+#         end
+#     end
+#     puts sum
+# end
