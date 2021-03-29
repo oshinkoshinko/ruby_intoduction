@@ -172,3 +172,29 @@ puts name.gsub(/A|E|G|I|O|S|Z/, "A" => "4", "E" => "3", "G" => "6", "I" => "1", 
 #     end
 #     puts sum
 # end
+
+#多重ループ
+# n = gets.to_i
+n = 5
+array = Array.new
+
+n.times do
+   str = "d"
+   array << str
+end
+
+# m = gets.to_i
+m = 3
+
+m.times do
+    # word = gets.chomp
+    word = "dog"
+    array.each do |a|
+        if word.include?(a)
+            puts "YES"
+        else
+            puts "NO"
+        end
+    end
+end
+
