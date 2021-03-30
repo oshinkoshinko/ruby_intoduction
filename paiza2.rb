@@ -201,3 +201,15 @@ end
 #べき乗　累乗
 p 2**2 #=>4
 p 3**3 #=>27
+
+#配列　組み合わせ 順序　重複有無　combination repeated_combination permutation repeated_permutation...
+
+array = [1,2,4]
+#組み合わせ(順序なし、重複許さない)
+p array.combination(2).to_a #=> [[1, 2], [1, 4], [2, 4]]
+#組み合わせ(順序なし、重複許す)
+p array.repeated_combination(2).to_a #=> [[1, 1], [1, 2], [1, 4], [2, 2], [2, 4], [4, 4]]
+#組み合わせ(順序あり、重複許さない)
+p array.permutation(2).to_a #=> [[1, 2], [1, 4], [2, 1], [2, 4], [4, 1], [4, 2]]
+#組み合わせ(順序あり、重複許す)
+p array.repeated_permutation(2).to_a #=> [[1, 1], [1, 2], [1, 4], [2, 1], [2, 2], [2, 4], [4, 1], [4, 2], [4, 4]]
