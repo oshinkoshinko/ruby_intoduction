@@ -213,3 +213,49 @@ p array.repeated_combination(2).to_a #=> [[1, 1], [1, 2], [1, 4], [2, 2], [2, 4]
 p array.permutation(2).to_a #=> [[1, 2], [1, 4], [2, 1], [2, 4], [4, 1], [4, 2]]
 #組み合わせ(順序あり、重複許す)
 p array.repeated_permutation(2).to_a #=> [[1, 1], [1, 2], [1, 4], [2, 1], [2, 2], [2, 4], [4, 1], [4, 2], [4, 4]]
+
+p ["3", "8"].include?("2")
+
+# ・末尾が s, sh, ch, o, x のいずれかである英単語の末尾に es を付ける
+# ・末尾が f, fe のいずれかである英単語の末尾の f, fe を除き、末尾に ves を付ける
+# ・末尾の1文字が y で、末尾から2文字目が a, i, u, e, o のいずれでもない英単語の末尾の y を除き、末尾に ies を付ける
+# ・上のいずれの条件にも当てはまらない英単語の末尾には s を付ける
+
+p "leaf"[2]
+p "leaf".delete("f")
+# p "leaf".pluralize
+
+array = [1,2,3,4,5,6,7]
+p array[0..10]
+
+#配列同士の同じ位置の要素を掛け合わせる
+point =[1,2,3,4,5]
+number =[2,4,6,8,10]
+hiragana = ["あ", "い", "う", "え", "お"]
+#zipでindex順に一個ずつ取り出してブロックの処理
+p number.zip(point).map{|n,p| n*p}
+p number.zip(point).map{|n,p| n*p}.sum #sumメソッドは配列の合計
+p number.zip(hiragana)
+p number.zip(hiragana, point)
+
+# rule = gets.chomp.split.map(&:to_i)
+# dishes = rule[0]
+# members = rule[1]
+
+# calories = Array.new
+
+# dishes.times do
+#     calory = gets.to_i
+#     calories << calory
+# end
+
+# members.times do
+#     student = gets.chomp.split.map(&:to_i)
+#     p student.zip(calories).map{|n,p| n*p/100}.sum
+# end
+
+#配列　末尾から削除 pop
+
+array = [1,2,3,4,5]
+p array.pop #=> 5
+p array #=> [1,2,3,4]
