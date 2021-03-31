@@ -259,3 +259,8 @@ p number.zip(hiragana, point)
 array = [1,2,3,4,5]
 p array.pop #=> 5
 p array #=> [1,2,3,4]
+
+#配列　先頭に要素追加
+
+p array.unshift(10) #=>10,1,2,3,4,5
+p array.unshift("太郎") #=>"太郎",1,2,3,4,5
