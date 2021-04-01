@@ -66,4 +66,79 @@ p text.scan /クープ.?バ[ゲケ]ット/ #["クープバゲット", "クープ
 p text.split(/\n/).grep(/クープ.?バ[ゲケ]ット/)
 
 p "------------------------------"
+#正規表現　置換
 
+text = <<-TEXT
+<select name="game_console">
+<option value="wii_u">Wii U</option>
+<option value="ps4">プレステ4</option>
+<option value="gb">ゲームボーイ</option>
+</select>
+TEXT
+
+#value=""を抜き出す メタ文字"+"は直前の文字やパターンが1回以上連続する
+p text.scan /value="[a-z0-9_]+"/ #=>["value=\"wii_u\"", "value=\"ps4\"", "value=\"gb\""]
+#　><の間に何かしらの文字が続く
+p text.scan />.+</ #=>[">Wii U<", ">プレステ4<", ">ゲームボーイ<"]
+
+p text.scan /<option value="[a-z0-9_]+">(.+)<\/option>/
+
+#\w -> 英単語1文字を表すメタ文字
+p text.scan /\w/
+
+# * は「直前の文字が0個以上」を表す
+# [^AB] は「AでもなくBでもない任意の1文字」を表す
+
+"---------------------------------"
+# 空白文字
+# text = <<-TEXT
+# def hello(name)
+#   puts "Hello, #{name}!"
+# end
+
+# hello('Alice')
+          
+# hello('Bob')
+	
+# hello('Carol')
+# TEXT
+
+# ˆ =>行頭を表すメタ文字　$ =>行末を表すメタ文字
+# p text.scan /ˆ +/ #行頭から半角スペースが1文字以上続く
+# p text.scan /ˆ +$/ #行頭から行末まで半角スペースが1文字以上続く
+# # \t =>タブ文字を表すメタ文字 \s =>空白文字全般を表す
+# p text.scan /ˆ[ \t]+$/
+# p text.gsub(/ˆ[ \t]+$/, '')
+
+#正規表現と文字列の比較　=> 一致　"=~"　不一致　"!~"　
+
+p '123-4567' =~ /\d{3}-\d{4}/ #=>(文字列の一部または全部が一致)true なら0を返す
+
+a = "Hello"
+
+if a =~ /\d{1-3}-\d{4}/
+  puts "Match"
+else
+  puts "Unmatch"
+end
+
+text = "私の誕生日は1994年4月4日です"
+
+#()でキャプチャ　キャプチャした要素ごとに配列に
+p text.scan /\d+年\d月+\d日/ # =>["1994年4月4日"]
+p text.scan /(\d+)年(\d+)月(\d+)日/ # =>["1994","4","4"]
+# matchメソッド　文字列が正規表現にマッチするとMatchDataオブジェクトが返る
+p m = /(\d+)年(\d+)月(\d+)日/.match(text) #<MatchData "1994年4月4日" 1:"1994" 2:"4" 3:"4">
+p m[1] # =>"1994"
+p m[-1] # =>"4"
+p m[0] # =>"1994年4月4日" [0]は全体
+
+#キャプチャの結果にシンボルを付ける ?<symbol> => [:symbol]で取得できる！
+p text.scan /(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/
+p m = /(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/.match(text)
+p m[:year] # =>"1994"
+p m[1] # =>"1994" 連番でも取得可能
+
+#キャプチャで付けたシンボルをローカル変数に！！ 左辺に正規表現！！
+/(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/ =~ text
+puts year # =>1994
