@@ -38,31 +38,31 @@
 
 # p new_array
 
-array3 = Array.new
-array = (1..500).to_a
+# array3 = Array.new
+# array = (1..500).to_a
 
-1000.times do
-new_array = array.sample(3).sort
-dimen = new_array[0] * new_array[1] / 2
-if dimen <= 5000
-  if new_array[0]**2 + new_array[1]**2 == new_array[2]**2
-    array3 << new_array
-    array3 << ","
-  end
-end
-end
+# 1000.times do
+# new_array = array.sample(3).sort
+# dimen = new_array[0] * new_array[1] / 2
+# if dimen <= 5000
+#   if new_array[0]**2 + new_array[1]**2 == new_array[2]**2
+#     array3 << new_array
+#     array3 << ","
+#   end
+# end
+# end
 
-p array3
+# p array3
 
-array = (1..500).to_a
+# array = (1..500).to_a
 
-sum = 0
-array.each do |n|
-  p sum += n
-end
+# sum = 0
+# array.each do |n|
+#   p sum += n
+# end
 
-puts sum
+# puts sum
 
-205円切手が30枚、82円切手が40枚、30円切手が10枚あります。
+# 205円切手が30枚、82円切手が40枚、30円切手が10枚あります。
 
-これらの切手の全部または一部（1枚以上）を使って額面の和として表せる金額は何通りあるか、求めてください。
+# これらの切手の全部または一部（1枚以上）を使って額面の和として表せる金額は何通りあるか、求めてください。

@@ -264,3 +264,4 @@ p array #=> [1,2,3,4]
 
 p array.unshift(10) #=>10,1,2,3,4,5
 p array.unshift("太郎") #=>"太郎",1,2,3,4,5
+
