@@ -185,3 +185,17 @@ p text.gsub(/\,|-/) { |matched| matched == ',' ? ':' : "/"} #=>"123: 456/789"
 #gsub!は破壊的に置換
 p text.gsub!(/\,|-/, ":")  #=>"123:456:789"
 p text #=>"123:456:789"
+
+#例題
+old_syntax = <<-TEXT
+  :name => "Alice",
+  :age=>20,
+  :gender => :female
+TEXT
+
+def convert_hash_syntax(old_syntax)
+  old_syntax.gsub(/:(\w+) *=> */, '\1: ')
+end
+
+puts convert_hash_syntax(old_syntax)
+
