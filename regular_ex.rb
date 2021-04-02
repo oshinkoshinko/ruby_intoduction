@@ -199,3 +199,39 @@ end
 
 puts convert_hash_syntax(old_syntax)
 
+text = "0120-333-906"
+
+case text
+when /^\d{3}-\d{4}-\d{4}$/
+  puts "mobile number"
+when /^\d{3}-\d{4}$/
+  puts "postal code"
+when /^\d{4}-\d{3}-\d{3}$/
+  puts "Free dial"
+end
+
+# /正規表現/オプション
+# iオプション 小文字と大文字の区別をなくす
+p "HELLO" =~ /hello/i #=> 0
+# mオップション ドットが改行文字にもマッチ
+p "Hello\nMike" =~ /Hello.Mike/m #=> 0
+
+# 組み込み変数でマッチの結果を取得する
+text = "私の誕生日は1994年4月4日です"
+# $でMatchDataオブジェクトを取得する
+text =~ /(\d+)年(\d+)月(\d+)日/
+p $~ #=>#<MatchData "1994年4月4日" 1:"1994" 2:"4" 3:"4">
+p $& #=>"1994年4月4日"
+p $1 #=>"1994"
+p $2
+p $3
+p $+ #=>"4"最後のキャプチャ文字
+
+# Regexp.last_matchで結果を取得 =~などで最後にマッチした結果を取得
+text = "私の誕生日は1994年4月4日です"
+text =~ /(\d+)年(\d+)月(\d+)日/
+
+p Regexp.last_match #<MatchData "1994年4月4日" 1:"1994" 2:"4" 3:"4">
+p Regexp.last_match(0) #"1994年4月4日"
+p Regexp.last_match(1) #"1994"
+
