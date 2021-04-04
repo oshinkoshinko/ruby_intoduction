@@ -99,3 +99,84 @@ users.each do |user|
   puts user.hello
 end
 
+#例題
+class Gate
+
+  STATIONS = [:umeda, :juso, :mikuni]
+  FARES = [150, 190]
+
+  def initialize(name)
+    @name = name
+  end
+
+  def enter(ticket)
+    ticket.stamp(@name)
+  end
+
+  def exit(ticket)
+    fare = calc_fare(ticket)
+    fare <= ticket.fare
+  end
+
+  def calc_fare(ticket)
+    from = STATIONS.index(ticket.stamped_at)
+    to = STATIONS.index(@name)
+    distance = to - from
+    FARES[distance - 1]
+  end
+
+end
+
+class Ticket
+  attr_accessor :fare, :stamped_at
+
+  def initialize(fare)
+    @fare = fare
+  end
+
+  def stamp(name)
+    @stamped_at = name
+  end
+end
+
+#クラスの継承 super
+class Product
+  attr_reader :name, :price
+
+  def initialize(name, price)
+    @name = name
+    @price = price
+  end
+
+  # to_sメソッドをオーバーライド
+  def to_s
+    "name: #{name}, price: #{price}"
+  end
+end
+
+class DVD < Product
+  attr_reader :name, :price, :runnnig_time
+
+  def initialize(name, price, runnnig_time)
+    @name = name
+    @price = price
+    @runnnig_time = runnnig_time
+  end
+
+  def to_s
+    # "name: #{@name}, price: #{@price}, running_time: #{@running_time}"
+    "#{super}, running_time: #{@running_time}" #superでproductのto_sメソッドを継承
+  end
+end
+
+product = Product.new("A great movie", 1000)
+# p product.to_s #=> "#<Product:0x00007fa3ad03c7f0>" オブジェクトクラスのto_sメソッド
+p product.to_s #=>"name: A great movie, price: 1000" to_sメソッドをオーバーライド
+
+dvd = DVD.new("An awesome film", 3000, 120)
+p dvd.to_s
+
+a = "abc"
+b = "abc"
+
+p a.equal?(b)
