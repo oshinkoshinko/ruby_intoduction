@@ -71,3 +71,15 @@ p user.name
 
 #moduleにpricate付与した場合
 # p product.log 'public?' #=>private method `log' called for #<Product:0x00007fbfa0832478> (NoMethodError)
+
+#Mathモジュール
+class Calculator
+  include Math
+
+  def calc_sqrt(n)
+    sqrt(n)
+  end
+end
+
+calculator = Calculator.new
+p calculator.calc_sqrt(2)
