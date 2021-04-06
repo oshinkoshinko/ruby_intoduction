@@ -83,3 +83,4 @@ end
 
 calculator = Calculator.new
 p calculator.calc_sqrt(2)
+
