@@ -51,3 +51,46 @@ rescue => e
   puts e.backtrace
   puts "---"
 end
+
+#例外クラスを指定　一致した時だけ例外を捕捉する
+begin
+  1 / 0
+rescue ZeroDivisionError
+  puts "0で徐算しました"
+end
+#=> "0で徐算しました"
+
+#例外クラスが一致しないと異常終了
+# begin
+#   "abc".foo
+# rescue ZeroDivisionError
+#   puts "0で徐算しました"
+# end
+# #=> undefined method `foo' for "abc":String (NoMethodError)
+
+#複数の例外クラスを指定
+begin
+  "abc".foo
+rescue ZeroDivisionError
+  puts "0で徐算しました"
+rescue NoMethodError
+  puts "存在しないメソッドが呼び出されました"
+end
+#=>"存在しないメソッドが呼び出されました"
+
+begin
+  "abc".foo
+rescue ZeroDivisionError, NoMethodError
+  puts "0で徐算したか、存在しないメソッドが呼び出されました"
+end
+#=>"0で徐算したが、存在しないメソッドが呼び出されました"
+
+#例外オブジェクトを変数に格納も可能
+begin
+  "abc".foo
+rescue ZeroDivisionError, NoMethodError => e
+  puts "0で徐算したか、存在しないメソッドが呼び出されました"
+  puts "エラー: #{e.class} #{e.message}"
+end
+#=> 0で徐算したか、存在しないメソッドが呼び出されました
+#=> エラー: NoMethodError undefined method `foo' for "abc":String
