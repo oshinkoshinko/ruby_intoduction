@@ -94,3 +94,30 @@ rescue ZeroDivisionError, NoMethodError => e
 end
 #=> 0で徐算したか、存在しないメソッドが呼び出されました
 #=> エラー: NoMethodError undefined method `foo' for "abc":String
+
+#例外クラスの継承関係 Exception > StandardError > NameError > NoMethodError
+begin
+  1 / 0
+rescue NoMethodError
+  puts "NoMethodErrorです"
+rescue NameError
+  puts "NameErrorです"
+rescue
+  puts "その他のエラーです"
+end
+#=> "その他のエラーです"
+
+#例外発生時に再度処理をするretry
+retry_count = 0
+begin
+  puts "処理を開始します"
+  1 / 0
+rescue
+  retry_count += 1
+  if retry_count <= 3
+    puts "retryします。 #{retry_count}回目"
+    retry
+  else
+    puts "retryに失敗しました"
+  end
+end
