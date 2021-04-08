@@ -121,3 +121,36 @@ rescue
     puts "retryに失敗しました"
   end
 end
+
+#意図的に例外を発生させる
+def currency_of(country)
+  case country
+  when :japan
+    'yen'
+  when :us
+    'dollar'
+  when :india
+    'rupee'
+  else
+    raise "無効な国です。#{country}"
+  end
+end
+
+p currency_of(:japan) #=> "yen"
+# p currency_of(:italy) #=>`currency_of': 無効な国です。italy (RuntimeError)
+
+# RuntimeError以外の例外クラスを指定
+def currency2_of(country)
+  case country
+  when :japan
+    'yen'
+  when :us
+    'dollar'
+  when :india
+    'rupee'
+  else
+    raise ArgumentError, "無効な国です。#{country}"
+  end
+end
+
+p currency2_of(:italy) #=> in `currency2_of': 無効な国です。italy (ArgumentError)
