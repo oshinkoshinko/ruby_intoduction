@@ -122,7 +122,7 @@ rescue
   end
 end
 
-#意図的に例外を発生させる
+#意図的に例外を発生させる raise
 def currency_of(country)
   case country
   when :japan
@@ -153,4 +153,22 @@ def currency2_of(country)
   end
 end
 
-p currency2_of(:italy) #=> in `currency2_of': 無効な国です。italy (ArgumentError)
+# p currency2_of(:italy) #=> in `currency2_of': 無効な国です。italy (ArgumentError)
+
+#例外処理の範囲を絞る
+require 'date'
+
+def convert_heisei_to_date(heisei_text)
+  m = heisei_text.match(/平成(?<jp_year>\d+)年(?<month>\d+)月(?<day>\d+)日/)
+  year = m[:jp_year].to_i + 1988
+  month = m[:month].to_i
+  day = m[:day].to_i
+  begin
+    Date.new(year,month,day)
+  rescue ArgumentError
+    nil
+  end
+end
+
+p convert_heisei_to_date('平成6年4月4日') #=> <Date: 1994-04-04 ((2449447j,0s,0n),+0s,2299161j)>
+p convert_heisei_to_date('平成10年40月444日') #=>nil
