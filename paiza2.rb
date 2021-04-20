@@ -265,3 +265,42 @@ p array #=> [1,2,3,4]
 p array.unshift(10) #=>10,1,2,3,4,5
 p array.unshift("太郎") #=>"太郎",1,2,3,4,5
 
+#ソート
+# n = gets.to_i
+# a = Array.new
+
+# n.times do
+
+#     number = gets.to_i
+#     a.push(number)
+# end
+
+# puts a.sort #昇順
+# puts a.sort.reverse #降順
+
+#簡易カードゲーム
+# n = gets.to_i
+
+# n.times do
+
+#     pair = gets.chomp
+#     s = pair.chars
+#     set = pair.chars.uniq.size
+#     if set == 1
+#         puts "Four Card"
+#     elsif set == 2
+        
+#         daburi = pair.chars.uniq
+#         if s.count(daburi[0]) == 2
+#             puts "Two Pair"
+#         else
+#             puts "Three Card"
+#         end
+#     elsif set == 3
+#         puts "One Pair"
+#     else
+#         puts "No Pair"
+
+#     end
+    
+# end

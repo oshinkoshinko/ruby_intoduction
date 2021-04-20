@@ -155,7 +155,7 @@ end
 
 # p currency2_of(:italy) #=> in `currency2_of': 無効な国です。italy (ArgumentError)
 
-#例外処理の範囲を絞る
+#例外処理の範囲を絞る 安易にrescueは使わない！
 require 'date'
 
 def convert_heisei_to_date(heisei_text)

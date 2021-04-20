@@ -110,6 +110,7 @@ end
 #     puts "No"
 # end
 
+p "============="
 p array.join("").size
 p array.uniq.size
 
@@ -152,6 +153,7 @@ print array.sort
 
 #配列　最大最小
 
+p "=================="
 array = [1,10,2,9,3,8,4,7,5,6,1,1]
 
 p array.uniq
